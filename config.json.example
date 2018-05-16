@@ -6,5 +6,6 @@
 	"thumbnails": {
 		"height": 300,
 		"quality": 60
-	}
+	},
+	"pathPrefix": "/projectgalerij"
 }

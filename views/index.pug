@@ -3,10 +3,10 @@ extends layout
 mixin pageNavigation
 	.pagination
 		if currentPage > 1
-			a.previousPage(href=`/${currentPage - 1}`) ◀  nieuwere foto's
+			a.previousPage(href=`${pathPrefix}/${currentPage - 1}`) ◀  nieuwere foto's
 			
 		if currentPage < totalPages
-			a.nextPage(href=`/${currentPage + 1}`) oudere foto's  ▶
+			a.nextPage(href=`${pathPrefix}/${currentPage + 1}`) oudere foto's  ▶
 			
 		.clear
 
@@ -20,6 +20,6 @@ block contents
 				
 				.photos
 					for photo in date.entries
-						a(href=`/view/${date.date}/${photo.filename}`): img.photo(src=`/thumbnails/${date.date}/${photo.filename}`)
+						a(href=`${pathPrefix}/view/${date.date}/${photo.filename}`): img.photo(src=`${pathPrefix}/thumbnails/${date.date}/${photo.filename}`)
 							
 	+pageNavigation
