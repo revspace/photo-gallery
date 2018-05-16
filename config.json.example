@@ -2,7 +2,7 @@
 	"listen": {
 		"port": 4567
 	},
-	"pictureFolder": "/home/sven/mediaserver-photos",
+	"pictureFolder": "/path/to/photos",
 	"thumbnails": {
 		"height": 300,
 		"quality": 60
