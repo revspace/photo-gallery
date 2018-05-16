@@ -1,0 +1,139 @@
+body {
+	background-color: white;
+	font-family: sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+.grid {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	height: 100vh;
+}
+
+.contents {
+	overflow: auto;
+}
+
+.header {
+	background-color: #003e00;
+	color: white;
+}
+
+h1 {
+	margin: 0px;
+}
+
+h1 a {
+	text-decoration: none;
+	color: white;
+}
+
+h1 a:hover {
+	text-decoration: underline;
+}
+
+.logo {
+	float: right;
+	text-decoration: none;
+}
+
+h2 {
+	border-bottom: 1px solid gray;
+	font-size: 32px;
+	margin-top: 0px;
+}
+
+h1, .dates {
+	padding: 24px;
+}
+
+.date {
+	margin-bottom: 12px;
+}
+
+.photos {
+	/* display: flex;
+	align-items: stretch;
+	flex-wrap: wrap; */
+	line-height: 0;
+}
+
+img.photo {
+	object-fit: fill;
+	max-height: 300px;
+	padding: 3px;
+	/* flex-grow: 1; */
+}
+
+.viewImage {
+	position: relative;
+	background-color: rgb(10, 10, 10);
+}
+
+img.large {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+	margin: 0px;
+	padding: 0px;
+	line-height: 0;
+}
+
+.previous, .next {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	width: 128px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	color: white;
+	text-decoration: none;
+	font-size: 48px;
+
+	transition: background-color 70ms;
+	background-color: rgba(0, 0, 0, 0.21);
+}
+
+.previous:hover, .next:hover {
+	transition: background-color 70ms;
+	background-color: rgba(0, 0, 0, 0.81);
+}
+
+.previous {
+	left: 0px;
+}
+
+.next {
+	right: 0px;
+}
+
+.pagination {
+	background-color: rgb(230, 230, 230);
+	font-size: 20px;
+}
+
+.previousPage, .nextPage {
+	padding: 24px;
+	text-decoration: none;
+}
+
+.previousPage:hover, .nextPage:hover {
+	background-color: rgb(213, 213, 213);
+}
+
+.previousPage {
+	float: left;
+}
+
+.nextPage {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}

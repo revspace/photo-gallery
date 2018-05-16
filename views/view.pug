@@ -1,0 +1,11 @@
+extends layout
+
+block contents
+	.viewImage
+		if previousPhoto != null
+			a.previous(href=`/view/${previousPhoto.date.date}/${previousPhoto.filename}`) ◀
+			
+		if nextPhoto != null
+			a.next(href=`/view/${nextPhoto.date.date}/${nextPhoto.filename}`) ▶
+		
+		img.large(src=`/photos/${photo.date.date}/${photo.filename}`)

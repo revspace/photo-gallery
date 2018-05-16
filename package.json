@@ -1,0 +1,32 @@
+{
+  "name": "photo-gallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revspace/photo-gallery.git"
+  },
+  "keywords": [],
+  "author": "Sven Slootweg <admin@cryto.net>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/revspace/photo-gallery/issues"
+  },
+  "homepage": "https://github.com/revspace/photo-gallery#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "create-error": "^0.3.1",
+    "default-value": "^1.0.0",
+    "express": "^4.16.3",
+    "express-promise-router": "^3.0.2",
+    "gm": "^1.23.1",
+    "group-by": "0.0.1",
+    "moment": "^2.22.1",
+    "pug": "^2.0.3",
+    "unhandled-error": "^1.0.0"
+  }
+}

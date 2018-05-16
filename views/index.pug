@@ -1,0 +1,25 @@
+extends layout
+
+mixin pageNavigation
+	.pagination
+		if currentPage > 1
+			a.previousPage(href=`/${currentPage - 1}`) ◀  nieuwere foto's
+			
+		if currentPage < totalPages
+			a.nextPage(href=`/${currentPage + 1}`) oudere foto's  ▶
+			
+		.clear
+
+block contents
+	+pageNavigation
+	
+	.dates
+		for date in dates
+			.date
+				h2= date.momentDate.format("YYYY-MM-DD")
+				
+				.photos
+					for photo in date.entries
+						a(href=`/view/${date.date}/${photo.filename}`): img.photo(src=`/thumbnails/${date.date}/${photo.filename}`)
+							
+	+pageNavigation
