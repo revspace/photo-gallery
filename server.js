@@ -54,7 +54,7 @@ router.get("/latest", (req, res) => {
 				return {
 					date: picture.date.momentDate.format("YYYY-MM-DD"),
 					filename: picture.filename,
-					url: `${config.pathPrefix}/photos/${picture.date.date}/${picture.filename}`,
+					url: `${config.pathPrefix}/view/${picture.date.date}/${picture.filename}`,
 					thumbnail: `${config.pathPrefix}/thumbnails/${picture.date.date}/${picture.filename}`,
 				}
 			})
