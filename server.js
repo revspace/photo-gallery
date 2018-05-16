@@ -23,7 +23,7 @@ let thumbnailer = createThumbnailer(path.join(__dirname, "thumbnails"), config.p
 
 let photoManager = createPhotoManager({
 	photoPath: config.pictureFolder,
-	paginationThreshold: 10
+	paginationThreshold: config.paginationThreshold
 });
 
 let app = express();
