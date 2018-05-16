@@ -13,6 +13,7 @@ const createThumbnailer = require("./lib/thumbnailer");
 const createPhotoManager = require("./lib/photo-manager");
 const validatePhotoFilename = require("./lib/validate/photo-filename");
 const validateDateFolderName = require("./lib/validate/date-folder");
+const validateNumber = require("./lib/validate/number");
 const ValidationError = require("./lib/validate/error");
 
 let errorHandler = unhandledError((err, context) => {
@@ -38,30 +39,15 @@ app.use("/photos", express.static(config.pictureFolder));
 
 let router = expressPromiseRouter();
 
-router.get("/:page?", (req, res) => {
-	return Promise.try(() => {
-		return photoManager.getPaginatedDatesWithPictures();
-	}).then((dates) => {
-		let pageParam = defaultValue(req.params.page, 1);
-		let pageNumber = parseInt(pageParam) - 1;
-
-		if (!/^[0-9]+$/.test(pageParam) || pageNumber < 0 || pageNumber > dates.length - 1) {
-			res.status(404).send("404 not found");
-		} else {
-			res.render("index", {
-				dates: dates[pageNumber],
-				currentPage: pageNumber + 1,
-				totalPages: dates.length
-			});
-		}
-	});
-});
-
 router.get("/latest", (req, res) => {
 	return Promise.try(() => {
+		if (req.query.amount != null) {
+			validateNumber(req.query.amount);
+		}
+
 		return photoManager.getPictures();
 	}).then((pictures) => {
-		let amount = defaultValue(req.query.amount, 3);
+		let amount = parseInt(defaultValue(req.query.amount, 3));
 
 		res.json({
 			latest: pictures.slice(0, amount).map((picture) => {
@@ -73,6 +59,29 @@ router.get("/latest", (req, res) => {
 				}
 			})
 		});
+	});
+});
+
+router.get("/:page?", (req, res) => {
+	return Promise.try(() => {
+		if (req.params.page != null) {
+			validateNumber(req.params.page);
+		}
+
+		return photoManager.getPaginatedDatesWithPictures();
+	}).then((dates) => {
+		let pageParam = defaultValue(req.params.page, 1);
+		let pageNumber = parseInt(pageParam) - 1;
+
+		if (pageNumber < 0 || pageNumber > dates.length - 1) {
+			res.status(404).send("404 not found");
+		} else {
+			res.render("index", {
+				dates: dates[pageNumber],
+				currentPage: pageNumber + 1,
+				totalPages: dates.length
+			});
+		}
 	});
 });
 
