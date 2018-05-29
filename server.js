@@ -15,6 +15,7 @@ const validatePhotoFilename = require("./lib/validate/photo-filename");
 const validateDateFolderName = require("./lib/validate/date-folder");
 const validateNumber = require("./lib/validate/number");
 const ValidationError = require("./lib/validate/error");
+const ThumbnailError = require("./lib/thumbnailer/error");
 
 let errorHandler = unhandledError((err, context) => {
 	console.log("Unhandled error!", err);
@@ -126,6 +127,8 @@ app.use(router);
 app.use((err, req, res, next) => {
 	if (err instanceof ValidationError) {
 		res.status(404).send("404 not found");
+	} else if (err instanceof ThumbnailError) {
+		res.status(500).send("Failed to generate thumbnail - not an image file?");
 	} else {
 		errorHandler.report(err, {
 			req: req,
