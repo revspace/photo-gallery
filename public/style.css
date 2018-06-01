@@ -69,6 +69,8 @@ img.photo {
 .viewImage {
 	position: relative;
 	background-color: rgb(10, 10, 10);
+	height: 100%;
+	overflow: hidden; /* bah */
 }
 
 img.large {
