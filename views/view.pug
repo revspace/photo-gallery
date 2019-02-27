@@ -3,7 +3,7 @@ extends layout
 block meta
 	meta(property="og:title" content="RevSpace Works in Progress")
 	meta(property="og:description" content=photo.filename)
-	meta(property="og:image" content=`${pathPrefix}/photos/${photo.date.date}/${photo.filename}`)
+	meta(property="og:image" content=`${pathPrefix}/thumbnails/${photo.date.date}/${photo.filename}`)
 
 block contents
 	.viewImage
