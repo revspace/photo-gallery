@@ -35,6 +35,9 @@ app.locals.pathPrefix = config.pathPrefix;
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+// NOTE: This means that any proxied IP header is trusted! While the client IP is not currently used anywhere, this means that anyone who can connect to the service directly can spoof their IP.
+app.set("trust proxy", true);
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/photos", express.static(config.pictureFolder));
 
