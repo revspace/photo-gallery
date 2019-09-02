@@ -56,8 +56,8 @@ router.get("/latest", (req, res) => {
 					date: picture.date.momentDate.format("YYYY-MM-DD"),
 					filename: picture.filename,
 					url: `${config.pathPrefix}/view/${picture.date.date}/${picture.filename}`,
-					thumbnail: `${config.pathPrefix}/thumbnails/${picture.date.date}/${picture.filename}`,
-				}
+					thumbnail: `${config.pathPrefix}/thumbnails/${picture.date.date}/${picture.filename}`
+				};
 			})
 		});
 	});
@@ -99,7 +99,9 @@ router.get("/view/:date/:filename", (req, res) => {
 			res.render("view", {
 				photo: photo,
 				previousPhoto: photo.previous,
-				nextPhoto: photo.next
+				nextPhoto: photo.next,
+				// NOTE: The below does not currently work when the user-facing HTTPd is running on a non-standard port!
+				absoluteThumbnail: `${req.protocol}://${req.host}${config.pathPrefix}/thumbnails/${photo.date.date}/${photo.filename}`
 			});
 		}
 	});
